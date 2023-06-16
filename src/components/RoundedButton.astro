@@ -1,0 +1,97 @@
+---
+import { Icon } from 'astro-icon';
+
+interface Props {
+  text?: string;
+  href?: string;
+  style: 'primary' | 'secondary';
+  icon?: {
+    name: string;
+    side: 'left' | 'right';
+  };
+}
+
+const { text, href, style = 'primary', icon } = Astro.props as Props;
+---
+
+{
+  href && (
+    <a href={href} class:list={[style, 'button']}>
+      {icon && icon.side === 'left' && (
+        <div class="icon">
+          <Icon name={icon.name} />
+        </div>
+      )}
+      <span>{text}</span>
+      {icon && icon.side === 'right' && (
+        <div class="icon">
+          <Icon name={icon.name} />
+        </div>
+      )}
+    </a>
+  )
+}
+
+{
+  !href && (
+    <div class:list={[style, 'button']}>
+      {icon && icon.side === 'left' && (
+        <div class="icon">
+          <Icon name={icon.name} />
+        </div>
+      )}
+      <span>{text}</span>
+      {icon && icon.side === 'right' && (
+        <div class="icon">
+          <Icon name={icon.name} />
+        </div>
+      )}
+    </div>
+  )
+}
+
+<style>
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .button {
+    display: block;
+    height: 3rem;
+    font-size: 1.25rem;
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    border-radius: 1.5rem;
+  }
+
+  .button.primary {
+    background-color: var(--clr-neutral-600);
+    color: var(--clr-neutral-100);
+  }
+  .button.secondary {
+    background-color: var(--clr-neutral-100);
+    color: var(--clr-neutral-600);
+  }
+
+  .icon {
+    height: 3rem;
+    width: 3rem;
+    display: grid;
+    place-items: center;
+    border-radius: 1.5rem;
+  }
+  .primary .icon {
+    background-color: var(--clr-neutral-800);
+  }
+  .button.secondary .icon {
+    background-color: #fff;
+  }
+  svg {
+    height: 1.5rem;
+  }
+  span {
+    margin-inline: 2rem;
+  }
+</style>

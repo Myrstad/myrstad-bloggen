@@ -1,0 +1,29 @@
+---
+//components
+import MainHead from '../components/MainHead.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+//css
+import '../css/global.css';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+---
+
+<html lang="en">
+  <head>
+    <MainHead />
+  </head>
+  <body>
+    <Navbar />
+    <Breadcrumbs />
+    <main>
+      <slot> Tekniske problemer</slot>
+    </main>
+    <Footer />
+    <style>
+      main {
+        max-width: 82rem;
+        margin-inline: auto;
+      }
+    </style>
+  </body>
+</html>

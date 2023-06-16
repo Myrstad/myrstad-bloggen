@@ -1,0 +1,45 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+import { formatBlogPosts } from '../js/utils';
+
+import { getCollection, CollectionEntry } from 'astro:content';
+import ArticlePreviewLarge from '../components/ArticlePreviewLarge.astro';
+import ArticlePreviewSmall from '../components/ArticlePreviewSmall.astro';
+
+const blogEntries = await getCollection('blog');
+const filteredPosts = formatBlogPosts(blogEntries, { limit: 4 });
+const featuredPost = filteredPosts.pop(0) as CollectionEntry<'blog'>;
+---
+
+<MainLayout>
+  <div class="wrapper">
+    <h1>Bloggen</h1>
+    <ArticlePreviewLarge entry={featuredPost} />
+    <div class="grid">
+      {
+        filteredPosts.map((blogEntry) => (
+          <ArticlePreviewSmall entry={blogEntry} />
+        ))
+      }
+    </div>
+  </div>
+</MainLayout>
+
+<style>
+  .wrapper {
+    padding: 0 1rem;
+  }
+  .grid {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  h1 {
+    font-size: 8rem;
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+</style>

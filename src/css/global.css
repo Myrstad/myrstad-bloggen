@@ -1,0 +1,50 @@
+:root {
+  --clr-neutral-100: #e4eaf1;
+  --clr-neutral-200: #b5c1ce;
+  --clr-neutral-300: #8896a6;
+  --clr-neutral-400: #596a7d;
+  --clr-neutral-500: #364557;
+  --clr-neutral-600: #2a3849;
+  --clr-neutral-700: #213042;
+  --clr-neutral-800: #152539;
+  --clr-neutral-900: #051a33;
+
+  --ff-heading: serif;
+  --ff-main: sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--clr-neutral-900);
+  background-color: var(--clr-neutral-100);
+  font-family: var(--ff-main);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+  font-family: var(--ff-heading);
+}
+
+p {
+  line-height: 1.4;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}

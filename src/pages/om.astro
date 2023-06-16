@@ -1,0 +1,42 @@
+---
+import RoundedButton from '../components/RoundedButton.astro';
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout>
+  <div>hei jeg skal bare teste Roundedbutten her</div>
+  <RoundedButton
+    style="secondary"
+    text="Dette er en 'test' knapp"
+    icon={{
+      name: 'fa-solid:arrow-left',
+      side: 'left',
+    }}
+  />
+  <RoundedButton
+    style="primary"
+    text="Dette er en 'test' knapp"
+    icon={{
+      name: 'fa-solid:arrow-right',
+      side: 'right',
+    }}
+  />
+  <RoundedButton
+    style="primary"
+    href="#"
+    text="Dette er en knapp"
+    icon={{
+      name: 'mdi:account',
+      side: 'right',
+    }}
+  />
+  <RoundedButton
+    style="primary"
+    href="#"
+    text="Dette er en knapp"
+    icon={{
+      name: 'mdi:clock',
+      side: 'left',
+    }}
+  />
+</MainLayout>

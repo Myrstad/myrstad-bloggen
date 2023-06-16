@@ -1,0 +1,33 @@
+---
+import { CollectionEntry } from 'astro:content';
+const { entry } = Astro.props;
+import { formatDate } from '../js/utils';
+
+interface Props {
+  entry: CollectionEntry<'blog'>;
+}
+---
+
+<article>
+  <div class="image">
+    <img src={entry.data.image.src} alt={entry.data.image.alt} />
+  </div>
+  <div class="content">
+    <h3>{entry.data.title}</h3>
+    <p>{entry.data.description}</p>
+    <a href={`/innlegg/${entry.slug}`}>Les nå</a>
+  </div>
+</article>
+
+<style>
+  article {
+    --br: 1rem;
+    display: grid;
+  }
+
+  img {
+    border-radius: var(--br);
+    width: 100%;
+    object-fit: cover;
+  }
+</style>

@@ -1,0 +1,19 @@
+---
+console.log(Astro.url.pathname.split('/'));
+const splitPath = Astro.url.pathname.split('/');
+splitPath.forEach((part) => {
+  console.log(part);
+});
+---
+
+breadcrums
+<nav>
+  <ul>
+    <li><a href="/">Hjem</a></li>
+    {
+      splitPath.forEach((part) => {
+        return <li>{part}</li>;
+      })
+    }
+  </ul>
+</nav>
