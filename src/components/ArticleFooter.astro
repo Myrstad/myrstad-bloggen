@@ -1,4 +1,14 @@
 ---
+import { CollectionEntry } from "astro:content";
+import Tags from "./Tags.astro";
+
+const { entry } = Astro.props;
+
+interface Props {
+  entry: CollectionEntry<"blog">;
+}
 ---
 
 ArticleFooter
+
+<Tags tags={entry.data.tags} />
