@@ -1,8 +1,11 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
+import MainLayout from "../../layouts/MainLayout.astro";
+import ArticleHeader from "../../components/ArticleHeader.astro";
+import ArticleFooter from "../../components/ArticleFooter.astro";
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('blog');
+  const blogEntries = await getCollection("blog");
 
   return blogEntries.map((entry) => ({
     params: { slug: entry.slug },
@@ -14,4 +17,51 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<Content />
+<MainLayout>
+  <ArticleHeader entry={entry} />
+
+  <div class="blog-content">
+    <div class="divider"></div>
+    <Content />
+    <div class="divider"></div>
+  </div>
+  <ArticleFooter />
+</MainLayout>
+
+<style>
+  .blog-content {
+    max-width: 500px;
+    margin-inline: auto;
+    font-size: 1.25rem;
+  }
+
+  .divider {
+    height: 2px;
+    widows: 100%;
+    background-color: red;
+  }
+
+  .blog-content h1 {
+    font-size: 4rem;
+  }
+  .blog-content h2 {
+    font-size: 2rem;
+  }
+  .blog-content h3 {
+    font-size: 1.5rem;
+  }
+  .blog-content h4 {
+    font-size: 1.25rem;
+  }
+  .blog-content h5 {
+    font-size: 1rem;
+  }
+  .blog-content h6 {
+    font-size: 0.75rem;
+  }
+
+  .blog-content a {
+    color: #670ac3;
+    background-color: red;
+  }
+</style>

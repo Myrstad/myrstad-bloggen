@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MainLayout.astro
 title: Innleggs tittel, maks to linjer...
 date: 2023-06-13
 author:
@@ -10,11 +9,12 @@ image:
   alt: Test picture
 description: Article Description; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad.
 draft: false
-tags: ['test', 'css', 'js', 'svelte']
+tags: ["test", "css", "js", "svelte"]
 ---
 
 ## ja
 
+[I'm an inline-style link](https://www.google.com)
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pharetra vel turpis nunc eget lorem dolor. Sed euismod nisi porta lorem mollis aliquam ut. Dolor magna eget est lorem ipsum. Rhoncus dolor purus non enim praesent elementum. Laoreet suspendisse interdum consectetur libero id faucibus nisl tincidunt eget. Tellus rutrum tellus pellentesque eu. Eu nisl nunc mi ipsum faucibus. Id venenatis a condimentum vitae sapien pellentesque. Tristique senectus et netus et malesuada fames. Nec ultrices dui sapien eget mi. Nec ullamcorper sit amet risus nullam.
 
 ## nei

@@ -1,0 +1,73 @@
+---
+import { CollectionEntry } from "astro:content";
+import RoundedButton from "./RoundedButton.astro";
+import ShareModal from "./ShareModal.astro";
+import { formatDate } from "../js/utils";
+
+const { entry } = Astro.props;
+
+interface Props {
+  entry: CollectionEntry<"blog">;
+}
+---
+
+<div class="wrapper">
+  <div class="heading">
+    <h1>{entry.data.title}</h1>
+    <p>{entry.data.description}</p>
+  </div>
+  <img src={entry.data.image.src} alt={entry.data.image.alt} />
+  <div class="buttons">
+    <RoundedButton
+      style="primary"
+      href={entry.data.author.email}
+      text={entry.data.author.name}
+      icon={{
+        name: "mdi:account",
+        side: "left",
+      }}
+    />
+    <RoundedButton
+      style="primary"
+      text={formatDate(entry.data.date)}
+      icon={{
+        name: "mdi:clock",
+        side: "left",
+      }}
+    />
+    <ShareModal />
+  </div>
+</div>
+
+<style>
+  .wrapper {
+    max-width: 58rem;
+    margin-inline: auto;
+  }
+
+  .heading {
+    max-width: 40rem;
+    margin-inline: auto;
+  }
+
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  p {
+    font-size: 1.6875rem;
+  }
+
+  img {
+    border-radius: 3rem;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+</style>

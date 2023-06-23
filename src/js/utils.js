@@ -2,11 +2,15 @@ export function slugify(text) {
   return text
     .toString()
     .toLowerCase()
-    .replace(/\s+/g, '-')
-    .replace(/[^\w-]+/g, '')
-    .replace(/--+/g, '-')
-    .replace(/^-+/, '')
-    .replace(/-+$/, '');
+    .replace(/\s+/g, "-")
+    .replace(/[^\w-]+/g, "")
+    .replace(/--+/g, "-")
+    .replace(/^-+/, "")
+    .replace(/-+$/, "");
+}
+
+export function deSlugify(text) {
+  return text.split("-").join(" ");
 }
 
 export function formatDate(date) {
@@ -44,7 +48,7 @@ export function formatBlogPosts(
   }
 
   // limit if number is passed
-  if (typeof limit === 'number') {
+  if (typeof limit === "number") {
     return filteredPosts.slice(0, limit);
   }
   return filteredPosts;

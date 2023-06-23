@@ -1,11 +1,11 @@
 ---
 //components
-import MainHead from '../components/MainHead.astro';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
+import MainHead from "../components/MainHead.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 //css
-import '../css/global.css';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
+import "../css/global.css";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
 ---
 
 <html lang="en">
@@ -16,11 +16,17 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
     <Navbar />
     <Breadcrumbs />
     <main>
-      <slot> Tekniske problemer</slot>
+      <div class="wrapper">
+        <slot> Tekniske problemer</slot>
+      </div>
     </main>
     <Footer />
     <style>
       main {
+        padding: 0 1rem;
+      }
+
+      .wrapper {
         max-width: 82rem;
         margin-inline: auto;
       }

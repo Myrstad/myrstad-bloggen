@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MainLayout.astro
 title: Hei på deg søta
 date: 2023-06-13
 author:
@@ -10,7 +9,7 @@ image:
   alt: Test picture
 description: massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper
 draft: false
-tags: ['test', 'css', 'js', 'svelte']
+tags: ["test", "css", "js", "svelte"]
 ---
 
 ### oki
