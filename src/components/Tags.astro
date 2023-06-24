@@ -1,4 +1,6 @@
 ---
+import RoundedButton from "./RoundedButton.astro";
+
 interface Props {
   tags: Array<string>;
 }
@@ -7,3 +9,7 @@ const { tags } = Astro.props;
 ---
 
 {tags.map((tag) => <p>{tag}</p>)}
+
+<div>
+  {tags.map((tag) => <RoundedButton style="tertiary" text={tag} />)}
+</div>

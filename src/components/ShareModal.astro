@@ -1,4 +1,160 @@
 ---
+import { Icon } from "astro-icon";
+
+console.log(Astro.url.href);
+
+const path = Astro.url.href;
 ---
 
-hei
+<div class="shareModal">
+  <button role="dialog" class="dialog">
+    <Icon name="fa-solid:share-square" />
+  </button>
+  <div class="overlay">
+    <div class="card">
+      <div class="header">
+        <h2>Del innlegget</h2>
+        <button aria-label="lukk dialogen">
+          <Icon name="ph:x-bold" />
+        </button>
+      </div>
+      <div class="share-icon">
+        <p>Del via</p>
+        <div class="icons"></div>
+      </div>
+      <div class="copy-link">
+        <p>Kopier lenke</p>
+        <div class="copy">
+          <Icon name="mdi:link-variant" />
+          <span class="link">blog.mortenmyrstad.no/example/</span>
+          <button>Kopier</button>
+        </div>
+      </div>
+      <h2>Hei på deg (denne er WIP)</h2>
+      <p>{path}</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  button {
+    border: none;
+    outline: none;
+    padding: 0;
+  }
+  button.dialog {
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    border-radius: 1.5rem;
+    background-color: var(--clr-neutral-700);
+  }
+
+  .dialog svg {
+    display: block;
+    color: var(--clr-neutral-100);
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  .overlay {
+    display: none;
+  }
+
+  .overlay.visible {
+    display: grid;
+    place-items: center;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background-color: #b5c1ce7f;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 1rem;
+  }
+
+  .card {
+    background-color: var(--clr-neutral-700);
+    color: var(--clr-neutral-100);
+    padding: 2rem;
+    border-radius: 1.5rem;
+    width: 100%;
+    max-width: 26rem;
+  }
+
+  .card .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--clr-neutral-500);
+  }
+  .header h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  .header button {
+    background-color: var(--clr-neutral-100);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    display: grid;
+    place-items: center;
+  }
+  .header svg {
+    width: 1rem;
+    height: 1rem;
+    color: var(--clr-neutral-700);
+  }
+
+  p {
+    font-size: 0.875rem;
+  }
+
+  .copy {
+    border: 2px solid var(--clr-neutral-400);
+    height: 3rem;
+    border-radius: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+    padding-left: 0.5rem;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .copy svg {
+    height: 1.5rem;
+  }
+  .copy span {
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+  .copy button {
+    position: absolute;
+    right: 0.25rem;
+    top: 0.25rem;
+    bottom: 0.25rem;
+    border-radius: 0.125rem;
+    padding-inline: 0.75rem;
+    padding-block: 0;
+    background-color: var(--clr-neutral-200);
+    color: var(--clr-neutral-800);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+</style>
+
+<script>
+  const button = document.querySelector(".shareModal button") as HTMLElement;
+  const modal = document.querySelector(".shareModal .overlay") as HTMLElement;
+  button?.addEventListener("click", () => {
+    modal?.classList.toggle("visible");
+  });
+
+  modal.addEventListener("click", () => {
+    modal.classList.toggle("visible");
+  });
+</script>
