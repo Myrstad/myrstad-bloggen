@@ -1,9 +1,9 @@
 ---
 import { Icon } from "astro-icon";
 
-console.log(Astro.url.href);
-
-const path = Astro.url.href;
+const path = Astro.url.pathname;
+const fullPath = "blog.mortenmyrstad.no" + path;
+const fullURL = "https://blog.mortenmyrstad.no" + path;
 ---
 
 <div class="shareModal">
@@ -14,24 +14,44 @@ const path = Astro.url.href;
     <div class="card">
       <div class="header">
         <h2>Del innlegget</h2>
-        <button aria-label="lukk dialogen">
+        <button aria-label="lukk dialogen" class="close">
           <Icon name="ph:x-bold" />
         </button>
       </div>
       <div class="share-icon">
         <p>Del via</p>
-        <div class="icons"></div>
-      </div>
-      <div class="copy-link">
-        <p>Kopier lenke</p>
-        <div class="copy">
-          <Icon name="mdi:link-variant" />
-          <span class="link">blog.mortenmyrstad.no/example/</span>
-          <button>Kopier</button>
+        <div class="icons">
+          <a
+            href={`https://www.facebook.com/sharer.php?u=${fullURL}`}
+            target="_blank"
+            class="icon"
+          >
+            <Icon name="fa-brands:facebook" />
+          </a>
+          <a
+            href={`https://twitter.com/intent/tweet?url=${fullURL}`}
+            target="_blank"
+            class="icon"
+          >
+            <Icon name="fa-brands:twitter" />
+          </a>
+          <a
+            href={`https://www.linkedin.com/shareArticle?mini=true&url=${fullURL}`}
+            target="_blank"
+            class="icon"
+          >
+            <Icon name="fa-brands:linkedin" />
+          </a>
         </div>
       </div>
-      <h2>Hei på deg (denne er WIP)</h2>
-      <p>{path}</p>
+      <div class="copy-link">
+        <p>Eller kopier lenke</p>
+        <div class="copy">
+          <Icon name="mdi:link-variant" />
+          <span class="link">{fullPath}</span>
+          <button data-url={fullURL}>Kopier</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -112,6 +132,26 @@ const path = Astro.url.href;
   p {
     font-size: 0.875rem;
   }
+  .icons {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .icons .icon {
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    border: 2px solid var(--clr-neutral-400);
+    border-radius: 0.5rem;
+    fill: var(--clr-neutral-100);
+    color: var(--clr-neutral-100);
+  }
+
+  .icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 
   .copy {
     border: 2px solid var(--clr-neutral-400);
@@ -150,11 +190,33 @@ const path = Astro.url.href;
 <script>
   const button = document.querySelector(".shareModal button") as HTMLElement;
   const modal = document.querySelector(".shareModal .overlay") as HTMLElement;
+  const cardEl = document.querySelector(".shareModal .card") as HTMLElement;
+  const closeButton = document.querySelector(".overlay .close") as HTMLElement;
+  const copyButton = document.querySelector(
+    ".overlay .copy button"
+  ) as HTMLElement;
+
   button?.addEventListener("click", () => {
     modal?.classList.toggle("visible");
   });
 
-  modal.addEventListener("click", () => {
+  modal.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+    if (!cardEl.contains(target)) {
+      modal?.classList.toggle("visible");
+    }
+  });
+
+  closeButton.addEventListener("click", () => {
     modal.classList.toggle("visible");
+  });
+
+  copyButton?.addEventListener("click", () => {
+    const text = copyButton.getAttribute("data-url") ?? "";
+    navigator.clipboard.writeText(text);
+    setTimeout(() => {
+      copyButton.innerText = "Kopier";
+    }, 1000);
+    copyButton.innerText = "Kopiert";
   });
 </script>
