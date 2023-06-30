@@ -9,7 +9,7 @@ image:
   alt: Test picture
 description: Article Description; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad.
 draft: false
-tags: ["css", "js", "astro"]
+tags: ['css', 'js', 'astro']
 ---
 
 ## ja

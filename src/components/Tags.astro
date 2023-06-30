@@ -1,5 +1,5 @@
 ---
-import RoundedButton from "./RoundedButton.astro";
+import RoundedButton from './RoundedButton.astro';
 
 interface Props {
   tags: Array<string>;
@@ -8,8 +8,18 @@ interface Props {
 const { tags } = Astro.props;
 ---
 
-{tags.map((tag) => <p>{tag}</p>)}
-
 <div>
-  {tags.map((tag) => <RoundedButton style="tertiary" text={tag} />)}
+  {
+    tags.map((tag) => (
+      <RoundedButton style="tertiary" text={tag} href={`/tag/${tag}/`} />
+    ))
+  }
 </div>
+
+<style>
+  div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+  }
+</style>

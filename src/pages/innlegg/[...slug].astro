@@ -1,11 +1,12 @@
 ---
-import { getCollection } from "astro:content";
-import MainLayout from "../../layouts/MainLayout.astro";
-import ArticleHeader from "../../components/ArticleHeader.astro";
-import ArticleFooter from "../../components/ArticleFooter.astro";
+import { getCollection } from 'astro:content';
+import { formatBlogPosts } from '../../js/utils';
+import MainLayout from '../../layouts/MainLayout.astro';
+import ArticleHeader from '../../components/ArticleHeader.astro';
+import ArticleFooter from '../../components/ArticleFooter.astro';
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("blog");
+  const blogEntries = await getCollection('blog');
 
   return blogEntries.map((entry) => ({
     params: { slug: entry.slug },
@@ -15,17 +16,41 @@ export async function getStaticPaths() {
 // 2. When it's time to render, you can get the entry directly from the prop
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+const blogEntries = formatBlogPosts(await getCollection('blog'));
+let idx: any;
+blogEntries.forEach((blogEntry, index) => {
+  if (blogEntry.id == entry.id) {
+    idx = index;
+  }
+});
+const prevIndex = idx - 1;
+const nextIndex = idx + 1;
 ---
 
 <MainLayout>
   <ArticleHeader entry={entry} />
 
   <div class="blog-content">
-    <div class="divider"></div>
+    <div class="divider top"></div>
     <Content />
-    <div class="divider"></div>
+    <div class="divider bottom"></div>
   </div>
-  <ArticleFooter entry={entry} />
+  <ArticleFooter
+    entry={entry}
+    prev={{
+      string: 'Forrige',
+      index: prevIndex,
+      icon: 'fa-solid:arrow-left',
+      side: 'left',
+    }}
+    next={{
+      string: 'Neste',
+      index: nextIndex,
+      icon: 'fa-solid:arrow-right',
+      side: 'right',
+    }}
+  />
 </MainLayout>
 
 <style>
@@ -38,7 +63,14 @@ const { Content } = await entry.render();
   .divider {
     height: 2px;
     widows: 100%;
-    background-color: red;
+    background-color: var(--clr-neutral-300);
+  }
+
+  .divider.top {
+    margin-top: 2rem;
+  }
+  .divider.bottom {
+    margin-bottom: 2rem;
   }
 
   .blog-content h1 {

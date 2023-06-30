@@ -1,14 +1,72 @@
 ---
-import { CollectionEntry } from "astro:content";
-import Tags from "./Tags.astro";
+import { CollectionEntry, getCollection } from 'astro:content';
+import { formatBlogPosts } from '../js/utils';
+import Tags from './Tags.astro';
+import RoundedButton from './RoundedButton.astro';
 
-const { entry } = Astro.props;
+const { entry, prev, next } = Astro.props;
+
+interface link {
+  index: number;
+  string: string;
+  icon: string;
+  side: 'left' | 'right';
+}
 
 interface Props {
-  entry: CollectionEntry<"blog">;
+  entry: CollectionEntry<'blog'>;
+  prev: link;
+  next: link;
 }
+
+const blogEntries = formatBlogPosts(await getCollection('blog'));
 ---
 
-<Tags tags={entry.data.tags} />
+<div class="wrapper">
+  <h3>Les mer om</h3>
+  <Tags tags={entry.data.tags} />
 
-<h3>Les kronologisk</h3>
+  <h3>Les kronologisk</h3>
+  <div class="buttons">
+    {
+      prev.index >= 0 && (
+        <RoundedButton
+          style="primary"
+          icon={{ name: prev.icon, side: prev.side }}
+          text={prev.string}
+          href={blogEntries[prev.index].slug}
+        />
+      )
+    }
+    {
+      next.index < blogEntries.length && (
+        <RoundedButton
+          style="primary"
+          icon={{ name: next.icon, side: next.side }}
+          text={next.string}
+          href={blogEntries[next.index].slug}
+        />
+      )
+    }
+  </div>
+</div>
+
+<style>
+  .wrapper {
+    max-width: 58rem;
+    margin-inline: auto;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  @media screen and (max-width: 500px) {
+    .buttons {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+</style>

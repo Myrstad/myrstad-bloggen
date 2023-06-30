@@ -9,8 +9,8 @@
   --clr-neutral-800: #152539;
   --clr-neutral-900: #051a33;
 
-  --ff-heading: serif;
-  --ff-main: sans-serif;
+  --ff-heading: 'Roboto', sans-serif;
+  --ff-main: 'Archivo', sans-serif;
 }
 
 *,

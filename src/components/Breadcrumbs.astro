@@ -1,8 +1,8 @@
 ---
-import { deSlugify } from "../js/utils";
+import { deSlugify } from '../js/utils';
 
 //console.log(Astro.url.pathname.split("/"));
-const splitPath = Astro.url.pathname.split("/");
+const splitPath = Astro.url.pathname.split('/');
 interface linkWithName {
   name: string;
   url: string;
@@ -12,11 +12,11 @@ const breadcrumsLinks: Array<linkWithName> = [];
 
 splitPath.forEach((part, index) => {
   if (index == 0)
-    breadcrumsLinks.push({ name: "hjem", url: "/" } as linkWithName);
+    breadcrumsLinks.push({ name: 'hjem', url: '/' } as linkWithName);
   if (index != 0 && splitPath[index]) {
-    let path = "/";
+    let path = '/';
     for (let i = 1; i <= index; i++) {
-      path += splitPath[i] + "/";
+      path += splitPath[i] + '/';
     }
     //console.log(path);
     breadcrumsLinks.push({ name: deSlugify(part), url: path } as linkWithName);
@@ -85,5 +85,12 @@ splitPath.forEach((part, index) => {
     background-color: var(--clr-neutral-900);
     color: var(--clr-neutral-100);
     text-decoration: none;
+  }
+
+  @media screen and (max-width: 700px) {
+    a {
+      font-size: 1rem;
+      padding: 0 1.5rem;
+    }
   }
 </style>

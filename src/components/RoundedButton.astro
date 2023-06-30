@@ -1,29 +1,29 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from 'astro-icon';
 
 interface Props {
   text?: string;
   href?: string;
-  style: "primary" | "secondary" | "tertiary";
+  style: 'primary' | 'secondary' | 'tertiary';
   icon?: {
     name: string;
-    side: "left" | "right";
+    side: 'left' | 'right';
   };
 }
 
-const { text, href, style = "primary", icon } = Astro.props as Props;
+const { text, href, style = 'primary', icon } = Astro.props as Props;
 ---
 
 {
   href && (
-    <a href={href} class:list={[style, "button"]}>
-      {icon && icon.side === "left" && (
+    <a href={href} class:list={[style, 'button', `${icon ? icon.side : ''}`]}>
+      {icon && icon.side === 'left' && (
         <div class="icon">
           <Icon name={icon.name} />
         </div>
       )}
       <span>{text}</span>
-      {icon && icon.side === "right" && (
+      {icon && icon.side === 'right' && (
         <div class="icon">
           <Icon name={icon.name} />
         </div>
@@ -34,14 +34,14 @@ const { text, href, style = "primary", icon } = Astro.props as Props;
 
 {
   !href && (
-    <div class:list={[style, "button"]}>
-      {icon && icon.side === "left" && (
+    <div class:list={[style, 'button', `${icon ? icon.side : ''}`]}>
+      {icon && icon.side === 'left' && (
         <div class="icon">
           <Icon name={icon.name} />
         </div>
       )}
       <span>{text}</span>
-      {icon && icon.side === "right" && (
+      {icon && icon.side === 'right' && (
         <div class="icon">
           <Icon name={icon.name} />
         </div>
@@ -97,5 +97,17 @@ const { text, href, style = "primary", icon } = Astro.props as Props;
   }
   span {
     margin-inline: 2rem;
+  }
+  .button.left span {
+    margin-left: 1rem;
+  }
+  .button.right span {
+    margin-right: 1rem;
+  }
+
+  @media screen and (max-width: 500px) {
+    .button {
+      font-size: 1rem;
+    }
   }
 </style>

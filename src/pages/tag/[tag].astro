@@ -1,10 +1,10 @@
 ---
-import { getCollection } from "astro:content";
-import MainLayout from "../../layouts/MainLayout.astro";
-import ArticlePreviewSmall from "../../components/ArticlePreviewSmall.astro";
+import { getCollection } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+import ArticlePreviewSmall from '../../components/ArticlePreviewSmall.astro';
 
 export async function getStaticPaths() {
-  const allPosts = await getCollection("blog");
+  const allPosts = await getCollection('blog');
   const uniqueTags = [
     ...new Set(allPosts.map((post) => post.data.tags).flat()),
   ];
@@ -22,7 +22,6 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
-console.log(posts);
 ---
 
 <MainLayout>
@@ -37,14 +36,35 @@ console.log(posts);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 4rem 2rem;
+    margin-bottom: 2rem;
   }
 
   h1 {
     font-size: 4rem;
     margin: 0;
+    margin-bottom: 2rem;
   }
 
   h1 span {
     color: #801de3;
+  }
+
+  @media screen and (max-width: 900px) {
+    h1 {
+      font-size: 3rem;
+    }
+
+    .grid {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  @media screen and (max-width: 500px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    .grid {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 </style>

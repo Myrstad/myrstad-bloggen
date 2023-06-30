@@ -1,6 +1,6 @@
 ---
 title: Et test
-date: 2023-06-01
+date: 2023-06-03
 author:
   name: Morten Myrstad
   email: mailto:post@mortenmyrstad.no
@@ -9,7 +9,7 @@ image:
   alt: Test picture
 description: Testing testing 2. gang
 draft: false
-tags: ["test", "css", "js"]
+tags: ['test', 'css', 'js']
 ---
 
 test da for fane 35

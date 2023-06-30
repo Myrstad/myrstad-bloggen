@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from 'astro-icon';
 ---
 
 <header>
@@ -37,6 +37,7 @@ import { Icon } from "astro-icon";
     position: relative;
     display: flex;
     justify-content: space-between;
+    align-content: center;
     max-width: 82rem;
     margin-inline: auto;
     height: 4rem;
@@ -47,7 +48,11 @@ import { Icon } from "astro-icon";
     gap: 1rem;
     font-size: 1.5rem;
     align-items: center;
-    font-weight: 600;
+    font-weight: 700;
+  }
+
+  .logomark {
+    display: flex;
   }
 
   .logo svg {
@@ -82,7 +87,7 @@ import { Icon } from "astro-icon";
     color: inherit;
     text-decoration: none;
     font-size: 1.25rem;
-    font-weight: 600;
+    font-weight: 500;
   }
 
   @media screen and (max-width: 900px) {
@@ -114,7 +119,10 @@ import { Icon } from "astro-icon";
     }
 
     nav.aria-expanded a {
+      display: flex;
+      width: 100%;
       padding: 1rem 4rem;
+      padding-right: auto;
     }
 
     button {
@@ -127,14 +135,19 @@ import { Icon } from "astro-icon";
       display: none;
     }
   }
+
+  @media screen and (max-width: 300px) {
+    nav.aria-expanded a {
+      padding: 1rem 2rem;
+    }
+  }
 </style>
 
 <script>
-  const navLinks = document.querySelector("#nav-links") as HTMLElement;
-  const navButton = document.querySelector("#nav-button") as HTMLElement;
-  console.log(navButton, navLinks);
+  const navLinks = document.querySelector('#nav-links') as HTMLElement;
+  const navButton = document.querySelector('#nav-button') as HTMLElement;
 
-  navButton.addEventListener("click", () => {
-    navLinks.classList.toggle("aria-expanded");
+  navButton.addEventListener('click', () => {
+    navLinks.classList.toggle('aria-expanded');
   });
 </script>

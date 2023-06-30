@@ -1,9 +1,9 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from 'astro-icon';
 
 const path = Astro.url.pathname;
-const fullPath = "blog.mortenmyrstad.no" + path;
-const fullURL = "https://blog.mortenmyrstad.no" + path;
+const fullPath = 'blog.mortenmyrstad.no<br/>' + path;
+const fullURL = 'https://blog.mortenmyrstad.no' + path;
 ---
 
 <div class="shareModal">
@@ -48,7 +48,7 @@ const fullURL = "https://blog.mortenmyrstad.no" + path;
         <p>Eller kopier lenke</p>
         <div class="copy">
           <Icon name="mdi:link-variant" />
-          <span class="link">{fullPath}</span>
+          <span class="link" set:html={fullPath} />
           <button data-url={fullURL}>Kopier</button>
         </div>
       </div>
@@ -100,7 +100,7 @@ const fullURL = "https://blog.mortenmyrstad.no" + path;
     padding: 2rem;
     border-radius: 1.5rem;
     width: 100%;
-    max-width: 26rem;
+    max-width: min(calc(100vw - 2rem), 27rem);
   }
 
   .card .header {
@@ -167,6 +167,8 @@ const fullURL = "https://blog.mortenmyrstad.no" + path;
 
   .copy svg {
     height: 1.5rem;
+    width: 1.5rem;
+    flex-shrink: 0;
   }
   .copy span {
     font-size: 0.875rem;
@@ -185,38 +187,70 @@ const fullURL = "https://blog.mortenmyrstad.no" + path;
     font-size: 0.875rem;
     font-weight: 600;
   }
+
+  @media screen and (max-width: 400px) {
+    .header h2 {
+      font-size: 1.5rem;
+    }
+
+    .copy {
+      padding: 0.25rem;
+      padding-left: 0.5rem;
+      gap: 1rem;
+    }
+
+    .copy span {
+      display: none;
+    }
+
+    .copy button {
+      all: unset;
+      position: relative;
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+      border-radius: 0.125rem;
+      padding-inline: 0.75rem;
+      background-color: var(--clr-neutral-200);
+      color: var(--clr-neutral-800);
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+  }
 </style>
 
 <script>
-  const button = document.querySelector(".shareModal button") as HTMLElement;
-  const modal = document.querySelector(".shareModal .overlay") as HTMLElement;
-  const cardEl = document.querySelector(".shareModal .card") as HTMLElement;
-  const closeButton = document.querySelector(".overlay .close") as HTMLElement;
+  const button = document.querySelector('.shareModal button') as HTMLElement;
+  const modal = document.querySelector('.shareModal .overlay') as HTMLElement;
+  const cardEl = document.querySelector('.shareModal .card') as HTMLElement;
+  const closeButton = document.querySelector('.overlay .close') as HTMLElement;
   const copyButton = document.querySelector(
-    ".overlay .copy button"
+    '.overlay .copy button'
   ) as HTMLElement;
 
-  button?.addEventListener("click", () => {
-    modal?.classList.toggle("visible");
+  button?.addEventListener('click', () => {
+    modal?.classList.toggle('visible');
   });
 
-  modal.addEventListener("click", (e) => {
+  modal.addEventListener('click', (e) => {
     const target = e.target as HTMLElement;
     if (!cardEl.contains(target)) {
-      modal?.classList.toggle("visible");
+      modal?.classList.toggle('visible');
     }
   });
 
-  closeButton.addEventListener("click", () => {
-    modal.classList.toggle("visible");
+  closeButton.addEventListener('click', () => {
+    modal.classList.toggle('visible');
   });
 
-  copyButton?.addEventListener("click", () => {
-    const text = copyButton.getAttribute("data-url") ?? "";
+  copyButton?.addEventListener('click', () => {
+    const text = copyButton.getAttribute('data-url') ?? '';
     navigator.clipboard.writeText(text);
     setTimeout(() => {
-      copyButton.innerText = "Kopier";
+      copyButton.innerText = 'Kopier';
     }, 1000);
-    copyButton.innerText = "Kopiert";
+    copyButton.innerText = 'Kopiert';
   });
 </script>
