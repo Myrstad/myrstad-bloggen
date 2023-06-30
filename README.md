@@ -4,4 +4,4 @@ Litt usikker på hvilken informasjon som burde være her? Men per nå sier jeg b
 
 ## Lyst til å lese?
 
-Bloggen ligger ute på [blog.mortenmyrstad.no](blog.mortenmyrstad.no)
+Bloggen ligger ute på [blog.mortenmyrstad.no](https://blog.mortenmyrstad.no)
