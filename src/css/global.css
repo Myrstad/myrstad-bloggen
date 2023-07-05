@@ -8,6 +8,7 @@
   --clr-neutral-700: #213042;
   --clr-neutral-800: #152539;
   --clr-neutral-900: #051a33;
+  --clr-purple-500: #801de3;
 
   --ff-heading: 'Roboto', sans-serif;
   --ff-main: 'Archivo', sans-serif;
@@ -17,6 +18,11 @@
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+*:focus {
+  outline: 4px solid var(--clr-purple-500);
+  outline-offset: 4px;
 }
 
 body {

@@ -3,13 +3,13 @@
 
 <footer>
   <div class="wrapper">
-    <div>Laga med kjærleik av Morten Myrstad</div>
-    <div>Opphavsrett &copy; <span id="copyrightYear"></span></div>
+    <p>Laga med kjærleik <br class="visible-mobile" /> av Morten Myrstad</p>
+    <p>Opphavsrett &copy; <span id="copyrightYear"></span></p>
   </div>
 </footer>
 
 <script>
-  const el = document.querySelector("#copyrightYear") as HTMLElement;
+  const el = document.querySelector('#copyrightYear') as HTMLElement;
   el.innerText = new Date().getFullYear().toString();
 </script>
 
@@ -29,5 +29,23 @@
     flex-direction: column;
     gap: 1rem;
     text-align: right;
+  }
+
+  .visible-mobile {
+    display: none;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  @media screen and (max-width: 500px) {
+    .visible-mobile {
+      display: block;
+    }
+
+    .wrapper {
+      text-align: center;
+    }
   }
 </style>

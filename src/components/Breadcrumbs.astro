@@ -29,7 +29,7 @@ splitPath.forEach((part, index) => {
     {
       breadcrumsLinks.map((link) => (
         <li>
-          <a href={link.url}>{link.name}</a>
+          <a href={link.url} set:text={link.name} />
         </li>
       ))
     }
@@ -39,9 +39,11 @@ splitPath.forEach((part, index) => {
 <style>
   nav {
     padding: 0 1rem;
+    overflow-y: scroll;
   }
 
   ul {
+    width: fit-content;
     max-width: 82rem;
     margin-inline: auto;
     padding: 0;

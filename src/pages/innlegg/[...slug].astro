@@ -53,7 +53,7 @@ const nextIndex = idx + 1;
   />
 </MainLayout>
 
-<style>
+<style is:inline>
   .blog-content {
     max-width: 500px;
     margin-inline: auto;
@@ -71,6 +71,17 @@ const nextIndex = idx + 1;
   }
   .divider.bottom {
     margin-bottom: 2rem;
+  }
+
+  .blog-content h1,
+  .blog-content h2,
+  .blog-content h3,
+  .blog-content h4,
+  .blog-content h5,
+  .blog-content h6 {
+    padding-top: 0.3em;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   .blog-content h1 {
@@ -91,9 +102,11 @@ const nextIndex = idx + 1;
   .blog-content h6 {
     font-size: 0.75rem;
   }
+  .blog-content img {
+    border-radius: 0.5rem;
+  }
 
   .blog-content a {
     color: #670ac3;
-    background-color: red;
   }
 </style>

@@ -25,7 +25,7 @@ const { posts } = Astro.props;
 ---
 
 <MainLayout>
-  <h1>Posts tagged with <span>{tag}</span></h1>
+  <h1>Innlegg som omhandler <span>{tag}</span></h1>
   <div class="grid">
     {posts.map((post) => <ArticlePreviewSmall entry={post} />)}
   </div>

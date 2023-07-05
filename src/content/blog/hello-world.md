@@ -24,3 +24,29 @@ Ante metus dictum at tempor. Eget sit amet tellus cras adipiscing enim eu turpis
 ## kanskje
 
 Viverra aliquet eget sit amet tellus cras adipiscing enim. Elit pellentesque habitant morbi tristique senectus. Tristique senectus et netus et malesuada. Urna et pharetra pharetra massa. Lobortis scelerisque fermentum dui faucibus in ornare quam viverra orci. Amet commodo nulla facilisi nullam. Ut aliquam purus sit amet luctus venenatis lectus magna fringilla. Laoreet id donec ultrices tincidunt. Convallis tellus id interdum velit laoreet id donec. Duis at tellus at urna condimentum mattis pellentesque id nibh. Quis imperdiet massa tincidunt nunc pulvinar sapien.
+
+## kode
+
+```python
+print('Jeg kan telle fra 1 til 10!')
+
+for i in range(1,11):
+  print(i)
+```
+
+## bilde
+
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://myoctocat.com/assets/images/base-octocat.svg)
+
+x2
+
+![Alt tekst](/img/test.png)
+
+x3
+![Alt tekst](/img/placeholder.jpg)
+
+(a + b)(a - b) = a^2^ - b^2^
+
+H<sub>2</sub>O er **viktig** _for_ å leve
+
+P decors: _italic_, **bold**, <u>under</u>, ~~through~~, H~2~O , x^2^ , <small>small</small>, [link](https://test.no),
