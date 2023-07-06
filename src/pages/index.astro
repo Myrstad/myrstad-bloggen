@@ -21,9 +21,9 @@ const featuredPost = filteredPosts.pop(0) as CollectionEntry<'blog'>;
   <ArticlePreviewLarge entry={featuredPost} />
   <div class="grid">
     {
-      filteredPosts.map((blogEntry) => (
-        <ArticlePreviewSmall entry={blogEntry} />
-      ))
+      filteredPosts
+        .reverse()
+        .map((blogEntry) => <ArticlePreviewSmall entry={blogEntry} />)
     }
   </div>
 </MainLayout>
