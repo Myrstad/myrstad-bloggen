@@ -8,7 +8,10 @@
   --clr-neutral-700: #213042;
   --clr-neutral-800: #152539;
   --clr-neutral-900: #051a33;
+  --clr-purple-100: #ece6f2;
+  --clr-purple-200: #cfafef;
   --clr-purple-500: #801de3;
+  --clr-purple-700: #49048e;
 
   --ff-heading: 'Roboto', sans-serif;
   --ff-main: 'Archivo', sans-serif;
@@ -20,9 +23,9 @@
   box-sizing: border-box;
 }
 
-*:focus {
-  outline: 4px solid var(--clr-purple-500);
-  outline-offset: 4px;
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
 }
 
 body {

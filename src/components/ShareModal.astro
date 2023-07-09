@@ -1,16 +1,15 @@
 ---
 import { Icon } from 'astro-icon';
-
 const path = Astro.url.pathname;
 const fullPath = 'blog.mortenmyrstad.no<br/>' + path;
 const fullURL = 'https://blog.mortenmyrstad.no' + path;
 ---
 
 <div class="shareModal">
-  <button role="dialog" class="dialog">
+  <button role="dialog" class="dialog" aria-label="Åpne del-dialogen">
     <Icon name="fa-solid:share-square" />
   </button>
-  <div class="overlay">
+  <dialog class="overlay">
     <div class="card">
       <div class="header">
         <h2>Del innlegget</h2>
@@ -49,11 +48,13 @@ const fullURL = 'https://blog.mortenmyrstad.no' + path;
         <div class="copy">
           <Icon name="mdi:link-variant" />
           <span class="link" set:html={fullPath} />
-          <button data-url={fullURL}>Kopier</button>
+          <button data-url={fullURL} aria-label="kopier lenken på denne siden"
+            >Kopier</button
+          >
         </div>
       </div>
     </div>
-  </div>
+  </dialog>
 </div>
 
 <style>
@@ -71,6 +72,13 @@ const fullURL = 'https://blog.mortenmyrstad.no' + path;
     background-color: var(--clr-neutral-700);
   }
 
+  .dialog:hover,
+  .dialog:focus,
+  .dialog.active {
+    outline: 4px solid var(--clr-purple-500);
+    outline-offset: 4px;
+  }
+
   .dialog svg {
     display: block;
     color: var(--clr-neutral-100);
@@ -78,27 +86,23 @@ const fullURL = 'https://blog.mortenmyrstad.no' + path;
     width: 1.5rem;
   }
 
-  .overlay {
+  dialog {
     display: none;
   }
 
-  .overlay.visible {
-    display: grid;
-    place-items: center;
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    background-color: #b5c1ce7f;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    padding: 1rem;
+  dialog[open] {
+    display: block;
+    padding: 0;
+    border: 0;
+    border-radius: 1.5rem;
+    width: 100%;
+    max-width: 27rem;
   }
 
   .card {
     background-color: var(--clr-neutral-700);
     color: var(--clr-neutral-100);
     padding: 2rem;
-    border-radius: 1.5rem;
     width: 100%;
     max-width: min(calc(100vw - 2rem), 27rem);
   }
@@ -123,6 +127,16 @@ const fullURL = 'https://blog.mortenmyrstad.no' + path;
     display: grid;
     place-items: center;
   }
+  .header button:focus {
+    outline: 2px solid var(--clr-purple-200);
+    outline-offset: 4px;
+  }
+  .header button:hover {
+    background-color: var(--clr-purple-200);
+  }
+  .header button:active {
+    background-color: var(--clr-purple-100);
+  }
   .header svg {
     width: 1rem;
     height: 1rem;
@@ -146,6 +160,13 @@ const fullURL = 'https://blog.mortenmyrstad.no' + path;
     border-radius: 0.5rem;
     fill: var(--clr-neutral-100);
     color: var(--clr-neutral-100);
+  }
+
+  .icon:hover,
+  .icon:active,
+  .icon:focus {
+    border-color: var(--clr-purple-200);
+    color: var(--clr-purple-200);
   }
 
   .icon svg {
@@ -188,6 +209,13 @@ const fullURL = 'https://blog.mortenmyrstad.no' + path;
     font-weight: 600;
   }
 
+  .copy button:active,
+  .copy button:hover,
+  .copy button:focus {
+    background-color: var(--clr-purple-200);
+    color: var(--clr-purple-700);
+  }
+
   @media screen and (max-width: 400px) {
     .header h2 {
       font-size: 1.5rem;
@@ -222,8 +250,12 @@ const fullURL = 'https://blog.mortenmyrstad.no' + path;
 </style>
 
 <script>
+  import { disableScroll, enableScroll } from '../js/utils';
+
   const button = document.querySelector('.shareModal button') as HTMLElement;
-  const modal = document.querySelector('.shareModal .overlay') as HTMLElement;
+  const modal = document.querySelector(
+    '.shareModal dialog'
+  ) as HTMLDialogElement;
   const cardEl = document.querySelector('.shareModal .card') as HTMLElement;
   const closeButton = document.querySelector('.overlay .close') as HTMLElement;
   const copyButton = document.querySelector(
@@ -231,18 +263,22 @@ const fullURL = 'https://blog.mortenmyrstad.no' + path;
   ) as HTMLElement;
 
   button?.addEventListener('click', () => {
-    modal?.classList.toggle('visible');
+    modal?.showModal();
+    modal.focus();
+    disableScroll();
   });
 
   modal.addEventListener('click', (e) => {
     const target = e.target as HTMLElement;
     if (!cardEl.contains(target)) {
-      modal?.classList.toggle('visible');
+      modal?.close();
+      enableScroll();
     }
   });
 
   closeButton.addEventListener('click', () => {
-    modal.classList.toggle('visible');
+    modal.close();
+    enableScroll();
   });
 
   copyButton?.addEventListener('click', () => {

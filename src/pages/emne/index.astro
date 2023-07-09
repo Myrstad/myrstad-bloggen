@@ -1,7 +1,39 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
 ---
 
 <MainLayout>
-  Velkommen til emne, dette kommer til å bli noe, jeg lover!
+  <h1>Finn innlegg etter emne</h1>
+  <ul>
+    {
+      tags.map((tag) => (
+        <li class="tag">
+          <a href={`/emne/${tag}`}>{tag}</a>
+        </li>
+      ))
+    }
+  </ul>
 </MainLayout>
+
+<style>
+  h1 {
+    font-size: 4rem;
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+
+  @media screen and (max-width: 900px) {
+    h1 {
+      font-size: 3rem;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+</style>

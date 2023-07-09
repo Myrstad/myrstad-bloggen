@@ -105,6 +105,13 @@ const { text, href, style = 'primary', icon } = Astro.props as Props;
     margin-right: 1rem;
   }
 
+  a:hover,
+  a:focus,
+  a:active {
+    outline: 4px solid var(--clr-purple-500);
+    outline-offset: 4px;
+  }
+
   @media screen and (max-width: 500px) {
     .button {
       font-size: 1rem;
