@@ -34,7 +34,7 @@ const blogEntries = formatBlogPosts(await getCollection('blog'));
           style="primary"
           icon={{ name: prev.icon, side: prev.side }}
           text={prev.string}
-          href={'./' + blogEntries[prev.index].slug}
+          href={'/innlegg/' + blogEntries[prev.index].slug}
         />
       )
     }
@@ -44,7 +44,7 @@ const blogEntries = formatBlogPosts(await getCollection('blog'));
           style="primary"
           icon={{ name: next.icon, side: next.side }}
           text={next.string}
-          href={'./' + blogEntries[next.index].slug}
+          href={'/innlegg/' + blogEntries[next.index].slug}
         />
       )
     }
