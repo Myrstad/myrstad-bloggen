@@ -6,11 +6,27 @@ import Footer from '../components/Footer.astro';
 //css
 import '../css/global.css';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+//props
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  frontmatter?: any;
+  robots?: true;
+}
+
+const {
+  title = 'Myrstadbloggen',
+  description = 'En personlig blogg som har innlegg om mye informasjonsrelatert',
+  image,
+  frontmatter,
+  robots,
+} = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <MainHead />
+    <MainHead {title} {description} {image} {frontmatter} {robots} />
   </head>
   <body>
     <Navbar />
