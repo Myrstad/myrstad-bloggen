@@ -11,6 +11,8 @@ const {
   robots,
 } = Astro.props;
 
+// console.log(frontmatter);
+
 const jsonLD = jsonLDGenerator({
   type: frontmatter ? 'post' : 'website',
   post: frontmatter,
@@ -22,7 +24,7 @@ const jsonLD = jsonLDGenerator({
 <link rel="canonical" href={url} />
 
 <!-- Open Graph -->
-<meta property="og:site_name" content="My Astro Blog" />
+<meta property="og:site_name" content="Myrstadbloggen" />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={url} />
