@@ -6,7 +6,7 @@ author:
   email: mailto:post@mortenmyrstad.no
 image:
   src: /img/hello-world.png
-  alt: Test picture
+  alt: Hei verden, kjent som det første programmet man skriver i et nytt programmeringsspråk
 description: Jeg tester hvordan det er å faktisk skrive et innlegg i markdown (.md-filer) og om det blir seende bra ut til slutt.
 draft: false
 tags: ['norsk', 'markdown']

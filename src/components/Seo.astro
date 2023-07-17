@@ -18,6 +18,10 @@ const jsonLD = jsonLDGenerator({
   post: frontmatter,
   url,
 });
+
+let socialImageURL;
+if (image?.src) socialImageURL = new URL(image.src, Astro.url);
+else socialImageURL = new URL(siteData.image.src, Astro.url);
 ---
 
 <!-- SEO -->
@@ -28,14 +32,11 @@ const jsonLD = jsonLDGenerator({
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:url" content={url} />
-<meta property="og:image" content={image?.src || siteData.image.src} />
-<meta property="og:image:url" content={image?.src || siteData.image.src} />
-<meta
-  property="og:image:secure_url"
-  content={image?.src || siteData.image.src}
-/>
+<meta property="og:image" content={socialImageURL} />
+<meta property="og:image:url" content={socialImageURL} />
+<meta property="og:image:secure_url" content={socialImageURL} />
 <meta property="og:image:alt" content={image?.alt || siteData.image.alt} />
-
+<meta property="og:locale" content="no_NO" />
 <!-- Twitter -->
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
