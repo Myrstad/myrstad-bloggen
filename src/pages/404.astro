@@ -1,0 +1,52 @@
+---
+import RoundedButton from '../components/RoundedButton.astro';
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout>
+  <div class="container">
+    <h1>404</h1>
+    <p>Siden ikke funnet</p>
+    <div class="buttons">
+      <RoundedButton
+        style="tertiary"
+        text="Gå tilbake"
+        href={`javascript: history.go(-1);`}
+        icon={{ side: 'right', name: 'mdi:arrow' }}
+      />
+    </div>
+  </div>
+</MainLayout>
+
+<style>
+  .container {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    max-width: fit-content;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 8rem;
+    margin: 0;
+  }
+
+  p {
+    font-size: 3rem;
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  @media screen and (max-width: 500px) {
+    p {
+      font-size: 2rem;
+    }
+  }
+</style>

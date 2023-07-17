@@ -5,7 +5,7 @@ author:
   name: Morten Myrstad
   email: mailto:post@mortenmyrstad.no
 image:
-  src: /img/hello-world.avif
+  src: /img/reading.jpg
   alt: Test picture
 description: Article Description; Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad.
 draft: false
