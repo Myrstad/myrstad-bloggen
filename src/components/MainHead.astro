@@ -19,6 +19,7 @@ const { description, title, image, frontmatter, robots } = Astro.props as Props;
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="sitemap" href="/sitemap-index.xml" />
+<meta name="theme-color" content="#051a33" />
 
 <Seo {title} {description} url={Astro.url} {image} {frontmatter} {robots} />
 
