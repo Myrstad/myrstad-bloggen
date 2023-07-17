@@ -11,7 +11,11 @@ interface Props {
 <article>
   <div class="image">
     <a href={`/innlegg/${entry.slug}`}>
-      <img src={entry.data.image.src} alt={entry.data.image.alt} />
+      <img
+        src={entry.data.image.src}
+        alt={entry.data.image.alt}
+        loading="lazy"
+      />
     </a>
   </div>
   <div class="content">

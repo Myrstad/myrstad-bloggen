@@ -16,7 +16,10 @@ const filteredPosts = formatBlogPosts(blogEntries, {
 const featuredPost = filteredPosts.pop(0) as CollectionEntry<'blog'>;
 ---
 
-<MainLayout>
+<MainLayout
+  title="Hjemmeside | Myrstadbloggen"
+  description="Myrstadbloggen er en liten personlig blogg, bloggen handler ikke om noe spessielt, heller ting jeg personlig interreserer meg for i øyeblikket!"
+>
   <h1>Bloggen</h1>
   <ArticlePreviewLarge entry={featuredPost} />
   <div class="grid">

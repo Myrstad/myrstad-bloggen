@@ -1,5 +1,4 @@
 ---
-import RoundedButton from '../components/RoundedButton.astro';
 import MainLayout from '../layouts/MainLayout.astro';
 ---
 
@@ -7,39 +6,103 @@ import MainLayout from '../layouts/MainLayout.astro';
   title="Om nettsiden | Myrstadbloggen"
   description="Lurer du på hva som er på denne nettsiden eller hvorfor den i det hele tatt eksisterer. Så får du svaret her"
 >
-  <div>hei jeg skal bare teste Roundedbutten her</div>
-  <RoundedButton
-    style="secondary"
-    text="Dette er en 'test' knapp"
-    icon={{
-      name: 'fa-solid:arrow-left',
-      side: 'left',
-    }}
-  />
-  <RoundedButton
-    style="primary"
-    text="Dette er en 'test' knapp"
-    icon={{
-      name: 'fa-solid:arrow-right',
-      side: 'right',
-    }}
-  />
-  <RoundedButton
-    style="primary"
-    href="#"
-    text="Dette er en knapp"
-    icon={{
-      name: 'mdi:account',
-      side: 'right',
-    }}
-  />
-  <RoundedButton
-    style="primary"
-    href="#"
-    text="Dette er en knapp"
-    icon={{
-      name: 'mdi:clock',
-      side: 'left',
-    }}
-  />
+  <section>
+    <div class="content">
+      <h1>Hva er denne bloggen</h1>
+      <p>
+        Enkelt sagt, så startet det hele startet som et lite sommerprosjekt. Så
+        det er ikke ment som en stor greie, men mer noe for å dokumentere egen
+        læring samt lage noe praktisk.
+      </p>
+    </div>
+    <div class="image">
+      <img
+        src="/img/branding-text.png"
+        alt="M Myrstad Bloggen"
+        loading="lazy"
+      />
+    </div>
+  </section>
+  <section>
+    <div class="content">
+      <h2>Hvorfor lese bloggen</h2>
+      <p>
+        Ingen god grunn, les og ha det gøy så lenge du ønsker. Jeg kan ikke
+        tvinge folk til å lese bloggen, men setter veldig pris på når folk gjør
+        det.
+      </p>
+    </div>
+    <div class="image">
+      <img
+        src="/img/reading.jpg"
+        alt="Representerer lesing av bloggen"
+        loading="lazy"
+      />
+    </div>
+  </section>
+  <section>
+    <div class="content">
+      <h2>Hvem står bak</h2>
+      <p>
+        Morten Myrstad er navnet, jeg er har en <a
+          href="https://mortenmyrstad.no/">nettside som kan leses her</a
+        >. Jeg er bare en allminnelig elev som liker informatikk, dette er bare
+        noe jeg har laget for gøy. Men ta gjerne kontakt: <a
+          href="mailto:post@mortenmyrstad.no">post@mortenmyrstad.no</a
+        >
+      </p>
+    </div>
+    <div class="image">
+      <img
+        src="/img/person.jpg"
+        alt="reprenentasjon av myrstad"
+        loading="lazy"
+      />
+    </div>
+  </section>
 </MainLayout>
+
+<style>
+  section:first-of-type {
+    margin-top: 2rem;
+  }
+  section {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+  .content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem 0;
+  }
+  h1,
+  h2 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.6875rem;
+    margin: 0;
+  }
+
+  a {
+    color: var(--clr-purple-500);
+  }
+
+  .image {
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+    aspect-ratio: 1.9;
+    object-fit: cover;
+    border-radius: 2rem;
+  }
+</style>

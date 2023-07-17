@@ -3,16 +3,37 @@ import MainLayout from '../../layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
 
 const posts = await getCollection('blog');
-const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
+//const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
+
+const tagsArray = [posts.map((post) => post.data.tags).flat()][0];
+const tagCount = tagsArray.reduce((acc, tag) => {
+  if (acc[tag]) {
+    acc[tag] += 1;
+  } else {
+    acc[tag] = 1;
+  }
+  return acc;
+}, {});
+
+const sortedTags = Object.entries(tagCount).sort(
+  (a: any, b: any) => b[1] - a[1]
+);
+
+console.log(sortedTags);
 ---
 
-<MainLayout>
+<MainLayout
+  title="Alle emnene | Myrstadbloggen"
+  description="Leter du etter informasjon eller et innlegg som omhandler et spessielt emne? Så finner du det her!"
+>
   <h1>Finn innlegg etter emne</h1>
   <ul>
     {
-      tags.map((tag) => (
+      sortedTags.map((tag) => (
         <li class="tag">
-          <a href={`/emne/${tag}`}>{tag}</a>
+          <a href={`/emne/${tag[0]}`}>
+            {tag[0]} ({tag[1]})
+          </a>
         </li>
       ))
     }

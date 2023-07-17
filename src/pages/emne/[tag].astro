@@ -24,7 +24,10 @@ const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
 
-<MainLayout>
+<MainLayout
+  title={`Emnet: ${tag} | Myrstadbloggen`}
+  description={`Her finner du alle innleggene som omhandler ${tag} på Myrstadbloggen`}
+>
   <h1>Innlegg som omhandler <span>{tag}</span></h1>
   <div class="grid">
     {posts.map((post) => <ArticlePreviewSmall entry={post} />)}

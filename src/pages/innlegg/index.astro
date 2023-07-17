@@ -1,7 +1,73 @@
 ---
 import MainLayout from '../../layouts/MainLayout.astro';
+
+import { formatBlogPosts } from '../../js/utils';
+
+import { getCollection, CollectionEntry } from 'astro:content';
+import ArticlePreviewLarge from '../../components/ArticlePreviewLarge.astro';
+import ArticlePreviewEmbed from '../../components/ArticlePreviewEmbed.astro';
+
+const blogEntries = await getCollection('blog');
+const filteredPosts = formatBlogPosts(blogEntries);
+const featuredPost = filteredPosts.pop(0) as CollectionEntry<'blog'>;
 ---
 
-<MainLayout>
-  Velkommen til innlegg, dette kommer til å bli noe, jeg lover!
+<MainLayout
+  title="Alle innleggene | Myrstadbloggen"
+  description="Lurer du kanskje hvor mye forskjellig eller likt jeg egentlig skriver om? Her ser du ALLe innleggene, så finn ut av det selv :)"
+>
+  <h1>Siste innlegg:</h1>
+  <ArticlePreviewLarge entry={featuredPost} />
+  <h2>Resterende innlegg:</h2>
+  <div class="grid">
+    {
+      filteredPosts
+        .reverse()
+        .map((blogEntry) => <ArticlePreviewEmbed entry={blogEntry} />)
+    }
+  </div>
 </MainLayout>
+
+<style>
+  h1 {
+    font-size: 4rem;
+    margin: 0;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin: 0;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 4rem;
+  }
+
+  @media screen and (max-width: 1200px) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+</style>
