@@ -70,6 +70,7 @@ import MainLayout from '../layouts/MainLayout.astro';
     display: flex;
     gap: 2rem;
     margin-bottom: 4rem;
+    align-items: center;
   }
   .content {
     width: 100%;
@@ -104,5 +105,23 @@ import MainLayout from '../layouts/MainLayout.astro';
     aspect-ratio: 1.9;
     object-fit: cover;
     border-radius: 2rem;
+  }
+
+  @media screen and (max-width: 900px) {
+    section {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    h1,
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 0.25em;
+    }
+
+    p {
+      font-size: 1rem;
+    }
   }
 </style>

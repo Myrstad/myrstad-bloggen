@@ -1,6 +1,6 @@
 ---
 title: Innleggs tittel, maks to linjer...
-date: 2023-06-13
+date: 2023-06-13 20:13:20
 author:
   name: Morten Myrstad
   email: mailto:post@mortenmyrstad.no

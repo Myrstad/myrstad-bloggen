@@ -14,7 +14,7 @@ export function deSlugify(text) {
 }
 
 export function formatDate(date) {
-  return new Date(date).toLocaleDateString(undefined);
+  return new Date(date).toLocaleDateString('no-NO');
 }
 
 export function formatBlogPosts(
