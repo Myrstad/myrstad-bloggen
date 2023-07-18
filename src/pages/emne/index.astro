@@ -1,4 +1,5 @@
 ---
+import RoundedButton from '../../components/RoundedButton.astro';
 import MainLayout from '../../layouts/MainLayout.astro';
 import { getCollection } from 'astro:content';
 
@@ -27,17 +28,17 @@ console.log(sortedTags);
   description="Leter du etter informasjon eller et innlegg som omhandler et spessielt emne? Så finner du det her!"
 >
   <h1>Finn innlegg etter emne</h1>
-  <ul>
+  <div class="flex-container">
     {
       sortedTags.map((tag) => (
-        <li class="tag">
-          <a href={`/emne/${tag[0]}`}>
-            {tag[0]} ({tag[1]})
-          </a>
-        </li>
+        <RoundedButton
+          style="tertiary"
+          href={`/emne/${tag[0]}/`}
+          text={`${tag[0]} (${tag[1]})`}
+        />
       ))
     }
-  </ul>
+  </div>
 </MainLayout>
 
 <style>
@@ -45,6 +46,12 @@ console.log(sortedTags);
     font-size: 4rem;
     margin: 0;
     margin-bottom: 2rem;
+  }
+
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
   }
 
   @media screen and (max-width: 900px) {
