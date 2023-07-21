@@ -18,7 +18,7 @@ const featuredPost = filteredPosts.pop(0) as CollectionEntry<'blog'>;
 >
   <h1>Siste innlegg:</h1>
   <ArticlePreviewLarge entry={featuredPost} />
-  <h2>Resterende innlegg:</h2>
+  {filteredPosts.length >= 1 && <h2>Resterende innlegg:</h2>}
   <div class="grid">
     {
       filteredPosts

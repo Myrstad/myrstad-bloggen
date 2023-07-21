@@ -19,8 +19,6 @@ const tagCount = tagsArray.reduce((acc, tag) => {
 const sortedTags = Object.entries(tagCount).sort(
   (a: any, b: any) => b[1] - a[1]
 );
-
-console.log(sortedTags);
 ---
 
 <MainLayout

@@ -41,9 +41,22 @@ interface Props {
     margin-inline: auto;
   }
 
+  article:hover {
+    outline: 2px solid var(--clr-neutral-200);
+    outline-offset: 0.5rem;
+    border-radius: 1.25rem;
+  }
+
+  article:focus-within {
+    outline: 2px solid var(--clr-neutral-400);
+    outline-offset: 0.5rem;
+    border-radius: 1.25rem;
+  }
+
   img {
     border-radius: var(--br);
     width: 100%;
+    aspect-ratio: 16/9;
     object-fit: cover;
   }
   .content {
