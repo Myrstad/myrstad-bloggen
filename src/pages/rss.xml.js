@@ -17,7 +17,7 @@ export async function get(context) {
         description: post.data.description,
         customData: post.data.customData,
         link: `/innlegg/${post.slug}/`,
-        categories: post.data.tags[0],
+        category: post.data.tags[0],
       })),
   });
 }
