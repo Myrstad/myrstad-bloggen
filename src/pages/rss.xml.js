@@ -9,13 +9,15 @@ export async function get(context) {
     description: "Abonner her på Myrstadbloggen med RSS",
     customData: "<language>no_NO</language>",
     site: "https://blog.mortenmyrstad.no/",
-    items: formatBlogPosts(blog).map((post) => ({
-      title: post.data.title,
-      pubDate: post.data.date,
-      description: post.data.description,
-      customData: post.data.customData,
-      link: `/innlegg/${post.slug}/`,
-      categories: post.data.tags,
-    })),
+    items: formatBlogPosts(blog)
+      .reverse()
+      .map((post) => ({
+        title: post.data.title,
+        pubDate: post.data.date,
+        description: post.data.description,
+        customData: post.data.customData,
+        link: `/innlegg/${post.slug}/`,
+        categories: post.data.tags,
+      })),
   });
 }
