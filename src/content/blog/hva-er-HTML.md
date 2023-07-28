@@ -9,7 +9,7 @@ image:
   alt: Vanlige symboler å se i et HTML-dokuement
 description: HTML er fundamentet til alt du ser på nett, så hva er det egentlig, og hvordan fungerer det?
 draft: false
-tags: ['norsk', 'html']
+tags: ['html']
 ---
 
 ## HyperText Markup Language!

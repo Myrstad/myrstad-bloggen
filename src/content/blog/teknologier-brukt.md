@@ -9,7 +9,7 @@ image:
   alt: En pult med pc, mobil og kaffe
 description: Hei verden! Dette er et innlegg som forklarer hvordan bloggen er bygd opp rent teknologisk. Kanskje du lærer noe, eller blir inspirert?
 draft: false
-tags: ['norsk', 'astro', 'github', 'figma']
+tags: ['astro', 'github', 'figma']
 ---
 
 ## Teknologiene jeg bruker til bloggen

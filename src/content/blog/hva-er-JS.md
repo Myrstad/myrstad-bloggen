@@ -9,7 +9,7 @@ image:
   alt: Bok med oversatt tittel "Javascript for web-designere"
 description: JavaScript er funksjonaliteten til det ferdigbygde "huset" bygd fundementalt av HTML og designet med CSS.
 draft: false
-tags: ['norsk', 'javascript']
+tags: ['javascript']
 ---
 
 ## Javascript
