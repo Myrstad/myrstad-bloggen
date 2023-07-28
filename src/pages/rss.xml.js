@@ -4,14 +4,18 @@ import { formatBlogPosts } from '../js/utils';
 
 export async function get(context) {
   const blog = await getCollection('blog');
-  console.log(context);
+  const sorted = blog
+    .sort((a, b) => {
+      return new Date(a.data.date) - new Date(b.data.date);
+    })
+    .reverse();
   return rss({
     title: 'Myrstadbloggen',
     description: 'Abonner her på Myrstadbloggen med RSS',
     customData: '<language>no-NO</language>',
     site: 'https://blog.mortenmyrstad.no/',
     xmlns: { media: 'http://search.yahoo.com/mrss/' },
-    items: blog.reverse().map((post) => ({
+    items: sorted.map((post) => ({
       title: post.data.title,
       pubDate: post.data.date,
       description: post.data.description,
@@ -19,7 +23,7 @@ export async function get(context) {
         context.site.origin + post.data.image.src
       }"></media:content>`,
       link: `/innlegg/${post.slug}/`,
-      category: post.data.tags[0],
+      categories: post.data.tags,
     })),
   });
 }
