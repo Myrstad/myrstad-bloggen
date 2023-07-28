@@ -12,9 +12,13 @@ export async function get(context) {
   return rss({
     title: 'Myrstadbloggen',
     description: 'Abonner her på Myrstadbloggen med RSS',
-    customData: '<language>no-NO</language>',
+    customData:
+      '<language>no-NO</language><atom:link href="http://blog.mortenmyrstad.no/rss.xml" rel="self" type="application/rss+xml" />',
     site: 'https://blog.mortenmyrstad.no/',
-    xmlns: { media: 'http://search.yahoo.com/mrss/' },
+    xmlns: {
+      media: 'http://search.yahoo.com/mrss/',
+      atom: 'http://www.w3.org/2005/Atom',
+    },
     items: sorted.map((post) => ({
       title: post.data.title,
       pubDate: post.data.date,

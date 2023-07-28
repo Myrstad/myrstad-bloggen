@@ -3,8 +3,16 @@
 
 <footer>
   <div class="wrapper">
-    <p>Laga med kjærleik <br class="visible-mobile" /> av Morten Myrstad</p>
-    <p>Opphavsrett &copy; <span id="copyrightYear"></span></p>
+    <p>
+      Laga med kjærleik <br class="visible-mobile" /> av <a
+        target="_blank"
+        href="https://mortenmyrstad.no/">Morten Myrstad</a
+      >
+    </p>
+    <p>
+      Opphavsrett &copy; <span id="copyrightYear"></span>
+      | <a href="/rss.xml">RSS</a>
+    </p>
   </div>
 </footer>
 
@@ -37,6 +45,33 @@
 
   p {
     margin: 0;
+  }
+
+  a {
+    color: var(--clr-purple-900);
+    text-decoration: none;
+    position: relative;
+    z-index: 5;
+  }
+
+  a::after {
+    content: '';
+    position: absolute;
+    bottom: -0.25rem;
+    right: -0.25rem;
+    left: -0.25rem;
+    height: 0.25rem;
+    background-color: #e4eaf17f;
+    transition: height 250ms ease-out;
+    z-index: -1;
+  }
+
+  a:hover::after {
+    height: 1.75rem;
+  }
+
+  svg {
+    height: 1.375rem;
   }
 
   @media screen and (max-width: 500px) {
