@@ -16,7 +16,7 @@ tags: ['norsk', 'html']
 
 **Hypertekst** betyr mer eller mindre bare at den kan lenke til andre nettsider. Som gir mening siden hva mer er en nettside egentlig mer enn informasjon i form av tekst og bilder samt lenker som fører deg til andre nettsider med samme type informasjon? Egentlig ingenting mer i det hele tatt...
 
-Så hva er **markup** som i "markup language" eller 'markeringsspråk' som det heter på norsk? Det er egentlig ikke noe mer enn måte å skrive ned et dokument med ferdigdefinerte forhold og funksjoner. For eksempel brukes `<h1> Tekst her </h1>` som en hoved overskrift på en nettside. `Tekst her` i seg selv er bare tekst ... men med litt 'markup' har den fått en større betydning!
+Så hva er **markup** som i "markup language" eller 'markeringsspråk' som det heter på norsk? Det er egentlig ikke noe mer enn en måte å skrive ned et dokument med ferdigdefinerte forhold og funksjoner. For eksempel brukes `<h1> Tekst her </h1>` som en hoved overskrift på en nettside. `Tekst her` i seg selv er bare tekst ... men med litt 'markup' har den fått en større betydning!
 
 Hvordan brukes HTML i praksis? Vel om vi tar hånd om standarden HTML5, den nyeste standarden har vi en del å snakke om.
 
