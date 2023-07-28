@@ -20,7 +20,7 @@ export default defineConfig({
         //   console.log(page, 'is excluded');
         //   return false;
         // }
-        // return true;
+        return true;
       },
     }),
     image({
