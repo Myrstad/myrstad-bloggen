@@ -1,6 +1,5 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
-import { formatBlogPosts } from '../js/utils';
 
 export async function get(context) {
   const blog = await getCollection('blog');
@@ -13,7 +12,7 @@ export async function get(context) {
     title: 'Myrstadbloggen',
     description: 'Abonner her på Myrstadbloggen med RSS',
     customData:
-      '<language>no-NO</language><atom:link href="http://blog.mortenmyrstad.no/rss.xml" rel="self" type="application/rss+xml" />',
+      '<language>no-NO</language><atom:link href="https://blog.mortenmyrstad.no/rss.xml" rel="self" type="application/rss+xml" />',
     site: 'https://blog.mortenmyrstad.no/',
     xmlns: {
       media: 'http://search.yahoo.com/mrss/',
