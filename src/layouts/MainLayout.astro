@@ -27,7 +27,19 @@ const {
 <html lang="no">
   <head>
     <MainHead {title} {description} {image} {frontmatter} {robots} />
-  </head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J49RXP5CQY"
+    ></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-J49RXP5CQY');
+    </script></head
+  >
+
   <body>
     <Navbar />
     <Breadcrumbs />
