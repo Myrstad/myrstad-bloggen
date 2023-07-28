@@ -9,7 +9,7 @@ image:
   alt: Maling, som symboliserer hvordan CSS designer nettsider
 description: CSS er malingen, strukturen, og innredninger på huset vi kaller HTML. Uten CSS hadde internettet mildt sagt vært veldig kjedelig
 draft: false
-tags: ['css', 'figma']
+tags: ['css']
 ---
 
 ## Cascading Style Sheet
