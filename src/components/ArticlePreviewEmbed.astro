@@ -1,6 +1,7 @@
 ---
 import { CollectionEntry } from 'astro:content';
 import { formatDate } from '../js/utils';
+import { Image } from '@astrojs/image/components';
 
 const { entry } = Astro.props;
 
@@ -11,7 +12,14 @@ interface Props {
 
 <a href={`/innlegg/${entry.slug}`}>
   <div class="image">
-    <img src={entry.data.image.src} alt={entry.data.image.alt} loading="lazy" />
+    <!-- <img src={entry.data.image.src} alt={entry.data.image.alt} loading="lazy" /> -->
+    <Image
+      src={entry.data.image.src}
+      alt={entry.data.image.alt}
+      width={128}
+      height={96}
+      format="webp"
+    />
   </div>
   <div class="content">
     <div class="text">

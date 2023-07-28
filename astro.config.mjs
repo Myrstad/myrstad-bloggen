@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
-
 import sitemap from '@astrojs/sitemap';
+
+import image from '@astrojs/image';
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,8 +23,13 @@ export default defineConfig({
         // return true;
       },
     }),
+    image({
+      serviceEntryPoint: '@astrojs/image/sharp',
+    }),
   ],
   markdown: {
-    shikiConfig: { theme: 'dracula' },
+    shikiConfig: {
+      theme: 'dracula',
+    },
   },
 });

@@ -1,6 +1,7 @@
 ---
 import { CollectionEntry } from 'astro:content';
 import RoundedButton from './RoundedButton.astro';
+import { Image } from '@astrojs/image/components';
 const { entry } = Astro.props;
 
 interface Props {
@@ -11,10 +12,12 @@ interface Props {
 <article>
   <div class="image">
     <a href={`/innlegg/${entry.slug}`}>
-      <img
+      <Image
         src={entry.data.image.src}
         alt={entry.data.image.alt}
-        loading="lazy"
+        width={416}
+        height={234}
+        format="webp"
       />
     </a>
   </div>

@@ -2,6 +2,7 @@
 import { CollectionEntry } from 'astro:content';
 import RoundedButton from './RoundedButton.astro';
 import ShareModal from './ShareModal.astro';
+import { Image } from '@astrojs/image/components';
 import { formatDate } from '../js/utils';
 
 const { entry } = Astro.props;
@@ -16,7 +17,14 @@ interface Props {
     <h1>{entry.data.title}</h1>
     <p>{entry.data.description}</p>
   </div>
-  <img src={entry.data.image.src} alt={entry.data.image.alt} />
+  <!-- <img src={entry.data.image.src} alt={entry.data.image.alt} /> -->
+  <Image
+    src={entry.data.image.src}
+    alt={entry.data.image.alt}
+    width={928}
+    height={522}
+    format="webp"
+  />
   <div class="buttons">
     <RoundedButton
       style="primary"
