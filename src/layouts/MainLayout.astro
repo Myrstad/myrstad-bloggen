@@ -38,6 +38,12 @@ const {
       </div>
     </main>
     <Footer />
+    <script>
+      document.addEventListener('visibilitychange', () => {
+        let state = document.visiblityState;
+        console.log(document.visibilityState);
+      });
+    </script>
     <style>
       main {
         padding: 0 1rem;
