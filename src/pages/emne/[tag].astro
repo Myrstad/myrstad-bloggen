@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import MainLayout from '../../layouts/MainLayout.astro';
 import ArticlePreviewSmall from '../../components/ArticlePreviewSmall.astro';
 import { formatBlogPosts } from '../../js/utils';
+import ArticlePreviewEmbed from '../../components/ArticlePreviewEmbed.astro';
 
 export async function getStaticPaths() {
   const allPosts = await getCollection('blog');
@@ -31,7 +32,7 @@ const { posts } = Astro.props;
 >
   <h1>Innlegg som omhandler <span>{tag}</span></h1>
   <div class="grid">
-    {posts.reverse().map((post) => <ArticlePreviewSmall entry={post} />)}
+    {posts.reverse().map((post) => <ArticlePreviewEmbed entry={post} />)}
   </div>
 </MainLayout>
 

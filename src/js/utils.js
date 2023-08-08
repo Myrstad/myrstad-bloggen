@@ -42,7 +42,7 @@ export function formatBlogPosts(
 
   // sortByDate or randomize
   if (sortByDate) {
-    filteredPosts.sort((a, b) => new Date(a.data.date) - new Date(b.data.date));
+    filteredPosts.sort((a, b) => new Date(b.data.date) - new Date(a.data.date));
   } else {
     filteredPosts.sort(() => Math.random() - 0.5);
   }

@@ -5,10 +5,11 @@ import { formatBlogPosts } from '../../js/utils';
 
 import { getCollection, CollectionEntry } from 'astro:content';
 import ArticlePreviewLarge from '../../components/ArticlePreviewLarge.astro';
-import ArticlePreviewEmbed from '../../components/ArticlePreviewEmbed.astro';
+import ArticlePreviewSmall from '../../components/ArticlePreviewSmall.astro';
+import Pagination from '../../components/Pagination.astro';
 
 const blogEntries = await getCollection('blog');
-const filteredPosts = formatBlogPosts(blogEntries);
+const filteredPosts = formatBlogPosts(blogEntries, { limit: 4 }).reverse();
 const featuredPost = filteredPosts.pop(0) as CollectionEntry<'blog'>;
 ---
 
@@ -18,14 +19,21 @@ const featuredPost = filteredPosts.pop(0) as CollectionEntry<'blog'>;
 >
   <h1>Siste innlegg:</h1>
   <ArticlePreviewLarge entry={featuredPost} />
-  {filteredPosts.length >= 1 && <h2>Resterende innlegg:</h2>}
   <div class="grid">
     {
       filteredPosts
         .reverse()
-        .map((blogEntry) => <ArticlePreviewEmbed entry={blogEntry} />)
+        .map((blogEntry) => <ArticlePreviewSmall entry={blogEntry} />)
     }
   </div>
+  {
+    blogEntries.length > 4 && (
+      <>
+        <p>Bla gjennom ALLE innleggene</p>
+        <Pagination url={{ next: '/innlegg/2/' }} />
+      </>
+    )
+  }
 </MainLayout>
 
 <style>
@@ -48,6 +56,11 @@ const featuredPost = filteredPosts.pop(0) as CollectionEntry<'blog'>;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 1rem;
+    margin-bottom: 4rem;
+    margin-top: 4rem;
+  }
+
+  .wrapper {
     margin-bottom: 4rem;
   }
 

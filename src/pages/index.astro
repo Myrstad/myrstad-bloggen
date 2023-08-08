@@ -12,7 +12,7 @@ const filteredPosts = formatBlogPosts(blogEntries, {
   limit: 4,
   filterOutFuturePosts: false,
   sortByDate: true,
-});
+}).reverse();
 const featuredPost = filteredPosts.pop(0) as CollectionEntry<'blog'>;
 ---
 

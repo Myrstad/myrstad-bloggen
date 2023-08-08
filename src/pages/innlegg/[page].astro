@@ -1,0 +1,63 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+import { CollectionEntry } from 'astro:content';
+import { formatBlogPosts } from '../../js/utils';
+import { getCollection } from 'astro:content';
+import ArticlePreviewSmall from '../../components/ArticlePreviewSmall.astro';
+import Pagination from '../../components/Pagination.astro';
+
+export async function getStaticPaths({ paginate }) {
+  const posts: CollectionEntry<'blog'>[] = formatBlogPosts(
+    await getCollection('blog')
+  );
+  return paginate(posts, { pageSize: 4 });
+}
+
+const { page } = Astro.props;
+const { data: posts } = page;
+console.log(page.url, page.currentPage);
+---
+
+<MainLayout>
+  <!--Display the current page number. Astro.params.page can also be used!-->
+  <div class="wrapper">
+    <h1>Innlegg</h1>
+    <div class="grid">
+      {posts.map((entry) => <ArticlePreviewSmall entry={entry} />)}
+    </div>
+    <p>Bla gjennom ALLE innleggene</p>
+    <Pagination url={page.url} currentPage={page.currentPage} />
+  </div>
+</MainLayout>
+
+<style>
+  .wrapper {
+    --_card_width: 26rem;
+    max-width: calc(26rem * 2 + 1rem);
+    margin: 0 auto;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: fit-content;
+    gap: 4rem 1rem;
+    margin-bottom: 4rem;
+  }
+
+  .pagination {
+    margin-bottom: 4rem;
+  }
+
+  @media screen and (max-width: 1200px) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

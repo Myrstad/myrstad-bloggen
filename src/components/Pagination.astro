@@ -1,0 +1,56 @@
+---
+import RoundedButton from './RoundedButton.astro';
+interface Props {
+  currentPage?: number;
+  url?: {
+    current?: string;
+    next?: string;
+    prev?: string;
+  };
+}
+
+const { currentPage, url } = Astro.props as Props;
+---
+
+<div class="pagination">
+  {
+    url?.prev && (
+      <RoundedButton
+        text="Forrige"
+        style="primary"
+        href={url.prev}
+        icon={{ name: 'fa-solid:arrow-left', side: 'left' }}
+      />
+    )
+  }
+  {currentPage && <div class="number">{currentPage}</div>}
+  {
+    url?.next && (
+      <RoundedButton
+        text="Neste"
+        style="primary"
+        href={url.next}
+        icon={{ name: 'fa-solid:arrow-right', side: 'right' }}
+      />
+    )
+  }
+</div>
+
+<style>
+  .pagination {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .number {
+    background-color: var(--clr-neutral-500);
+    color: var(--clr-neutral-100);
+    height: 3rem;
+    border-radius: 1.5rem;
+    aspect-ratio: 1/1;
+    font-size: 1.25rem;
+    display: grid;
+    place-items: center;
+  }
+</style>
