@@ -16,7 +16,7 @@ const { currentPage, url } = Astro.props as Props;
   {
     url?.prev && (
       <RoundedButton
-        text="Nyere"
+        text="Forrige"
         style="primary"
         href={url.prev}
         icon={{ name: 'fa-solid:arrow-left', side: 'left' }}
@@ -27,7 +27,7 @@ const { currentPage, url } = Astro.props as Props;
   {
     url?.next && (
       <RoundedButton
-        text="Eldre"
+        text="Neste"
         style="primary"
         href={url.next}
         icon={{ name: 'fa-solid:arrow-right', side: 'right' }}
