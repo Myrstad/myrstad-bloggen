@@ -7,7 +7,7 @@ author:
 image:
   src: /img/jinja.jpg
   alt: En Jinja-shrine i Japan. Som representerer Jinja logoen.
-description: JavaScript er funksjonaliteten til det ferdigbygde "huset" bygd fundementalt av HTML og designet med CSS.
+description: Python er blant de letteste programmeringsspråkene å lære, og Flask er kanskje det enkleste rammeverket til Python for web-applikasjoner. Denne artikkelen får deg raskt i gang!
 draft: false
 tags: ['python', 'flask', 'jinja', 'html']
 ---
